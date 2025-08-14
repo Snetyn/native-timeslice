@@ -1,3 +1,10 @@
 const { getDefaultConfig } = require('expo/metro-config');
 
-module.exports = getDefaultConfig(__dirname);
+const config = getDefaultConfig(__dirname);
+config.transformer = {
+  ...config.transformer,
+  enableBabelRCLookup: true,
+  sourceMaps: true,
+};
+
+module.exports = config;

@@ -16,7 +16,9 @@
     "android": {
       "package": "com.timeslice.timer",
       "versionCode": 1,
-      "permissions": []
+      "permissions": [
+        "DETECT_SCREEN_CAPTURE"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"

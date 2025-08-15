@@ -26,3 +26,5 @@ docker run --rm -v "${pwd}:/workspace" -w /workspace timeslice-android-builder .
 Notes:
 - The first image build downloads ~1GB of Android SDK components. Subsequent runs reuse the image.
 - The container runs Gradle inside and writes build outputs into your mounted workspace (including `android/app/build/outputs/...`), so you can inspect APKs locally.
+
+Note: touched to trigger CI run on 2025-08-14 UTC.

@@ -1,3 +1,16 @@
+// Ensure plugin management knows about the local react-native gradle plugin so
+// builds that rely on 'com.facebook.react' can apply the plugin when we include
+// the node_modules/react-native included build.
+pluginManagement {
+  repositories {
+    gradlePluginPortal()
+    mavenCentral()
+    google()
+  }
+  // include the local react-native gradle plugin as an included build
+  includeBuild(new File(["node", "--print", "require.resolve('@react-native/gradle-plugin/package.json', { paths: [require.resolve('react-native/package.json')] })"].execute(null, rootDir).text.trim()).getParentFile())
+}
+
 rootProject.name = 'Timeslice Timer'
 
 dependencyResolutionManagement {
@@ -15,4 +28,8 @@ apply from: new File(["node", "--print", "require.resolve('@react-native-communi
 applyNativeModulesSettingsGradle(settings)
 
 include ':app'
+// Include the local react-native package as an included build so ReactAndroid and the
+// react-native gradle plugin are available to the build when using the node_modules copy.
+includeBuild(new File(["node", "--print", "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim()).getParentFile())
+// Also include the react-native gradle plugin (kept for compatibility)
 includeBuild(new File(["node", "--print", "require.resolve('@react-native/gradle-plugin/package.json', { paths: [require.resolve('react-native/package.json')] })"].execute(null, rootDir).text.trim()).getParentFile())

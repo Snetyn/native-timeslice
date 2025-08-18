@@ -17,7 +17,10 @@
     dependencies {
         // Pin Android Gradle Plugin to a version compatible with compileSdk 35
         classpath('com.android.tools.build:gradle:8.6.0')
-        classpath('com.facebook.react:react-native-gradle-plugin')
+    // Ensure Kotlin Gradle plugin is available for org.jetbrains.kotlin.android
+    classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+    // Pin React Native Gradle Plugin to the React Native version to ensure codegen runs correctly
+    classpath('com.facebook.react:react-native-gradle-plugin:0.73.0')
     }
 }
 
